@@ -16,6 +16,10 @@ namespace HC_SR04 {
             d[i] = pins.i2cReadNumber(HC_SR04_Address, NumberFormat.UInt8LE, false);
         }
         let dis = (d[0]<<16 + d[1] << 8 + d[2]) / 10000;
+        for(let i=0; i<3; i++)
+        {
+            serial.writeNumbers(d)
+        }
         return dis;
     }
 }
