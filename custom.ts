@@ -12,9 +12,9 @@ namespace HC_SR04 {
         pins.i2cWriteBuffer(HC_SR04_Address, buf);
         basic.pause(120)
         let d = [0, 0, 0];
-        for (let i = 0; i < 3; i++) {
-            d[i] = pins.i2cReadNumber(HC_SR04_Address, NumberFormat.UInt8LE, false);
-        }
+        d[0] = pins.i2cReadNumber(HC_SR04_Address, NumberFormat.UInt8LE, true);
+        d[1] = pins.i2cReadNumber(HC_SR04_Address, NumberFormat.UInt8LE, true);
+        d[2] = pins.i2cReadNumber(HC_SR04_Address, NumberFormat.UInt8LE, false);
         let dis = (d[0]<<16 + d[1] << 8 + d[2]) / 10000;
         for(let i=0; i<3; i++)
         {
